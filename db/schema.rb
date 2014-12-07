@@ -11,7 +11,56 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141104104512) do
+ActiveRecord::Schema.define(version: 20141206225506) do
+
+  create_table "advertisements", force: true do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.integer  "priority_id"
+    t.integer  "sector_id"
+    t.integer  "company_id"
+    t.integer  "catalog_id"
+    t.datetime "call_date"
+    t.text     "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "catalogs", force: true do |t|
+    t.string   "name"
+    t.integer  "sector_id"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "companies", force: true do |t|
+    t.string   "company_name"
+    t.string   "company_telephone_1"
+    t.string   "company_telephone_2"
+    t.string   "company_email"
+    t.text     "company_address"
+    t.string   "representative_fullname"
+    t.string   "representative_telephone"
+    t.string   "representative_email"
+    t.string   "web_address"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "priorities", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sectors", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "first_name"

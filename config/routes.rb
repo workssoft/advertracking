@@ -1,13 +1,27 @@
 Rails.application.routes.draw do
-  resources :users
+ 
 
-  resources :users
+	get "/login" => "user_sessions#new", as: :login
+	delete "/logout" => "user_sessions#destroy", as: :logout
 
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+ 
+  resources :users 
+	resources :user_sessions, only: [:new, :create]
+  #resource :password_resets, only: [:new, :create, :edit, :update]
 
-  # You can have the root of your site routed with "root"
-  root 'home#index'
+	#get 'password_resets/edit.:id', to: 'password_resets#edit'	
+  resources :advertisements
+
+  resources :password_resets do
+      member do
+        patch :complete
+      end
+  end
+
+	# You can have the root of your site routed with "root"
+ 
+ 	root 'home#index'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
