@@ -1,2 +1,17 @@
-<h1>UserSessions#new</h1>
-<p>Find me in app/views/user_sessions/new.html.erb</p>
+<h1>Log In</h1>
+<%= form_tag user_sessions_path do %>
+	<%= label_tag :email, "Email Address" %>
+	<%= text_field_tag :email, params[:email] %>
+	<br />
+	
+	<%= label_tag :password, "Password" %>
+	<%= password_field_tag :password %>
+
+	<br />
+	<%= label_tag :remember_me, "Remember Me?" %>
+	<%= check_box_tag :remeber_me %>
+	<br />
+
+	<%= submit_tag "Log In" %>
+	<%= link_to "Forgot Password", new_password_reset_path %>
+<% end %> 
