@@ -1,0 +1,21 @@
+<h4 class="page-title">Sector List</h4>
+
+<div class="sector-list no-bullet">
+	<% @sectors.each do |sector| %>
+		<div id="<%= dom_id(sector) %>">
+			<h2><%= sector.name %></h2>
+			<p><%= sector.description %></p>
+			<ul>
+				<li><%= link_to 'Show', sector_path(sector) %></li>	
+				<li><%= link_to 'Edit', edit_sector_path(sector) %></li>	
+				<li><%= link_to 'Destroy', sector, method: :delete, data: { confirm: "Are you sure?" } %></li>
+			</ul>
+			<br class="clear" />
+		</div>
+	<% end %>
+</div>
+
+<br>
+
+
+<%= link_to "New Sector", new_sector_path %> 

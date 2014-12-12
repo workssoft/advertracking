@@ -1,23 +1,25 @@
 Rails.application.routes.draw do
  
-
 	get "/login" => "user_sessions#new", as: :login
 	delete "/logout" => "user_sessions#destroy", as: :logout
-
  
   resources :users 
 	resources :user_sessions, only: [:new, :create]
-  #resource :password_resets, only: [:new, :create, :edit, :update]
+  
+	#get "sectors/index"
 
+	resources :sectors#, only: [:index, :new, :create, :edit, :update]
+	#resource :password_resets, only: [:new, :create, :edit, :update]
+	
 	#get 'password_resets/edit.:id', to: 'password_resets#edit'	
-  resources :advertisements
+  resources :advertisements#, only: [:new, :create, :edit, :update]
 
   resources :password_resets do
       member do
         patch :complete
       end
   end
-
+ 
 	# You can have the root of your site routed with "root"
  
  	root 'home#index'

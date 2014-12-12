@@ -43,7 +43,7 @@ RSpec.describe UserSessionsController, :type => :controller do
 
 			it "sets the flash success message" do
 				post :create, email: "jason@teamtreehouse.com", password: "treehouse1"
-				expect(flash[:success]).to eq("Thanks for the logging in!")
+				expect(flash[:success]).to eq("Thanks for logging in!")
 			end
 		end
 

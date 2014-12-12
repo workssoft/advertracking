@@ -13,11 +13,19 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
+
+group :development do
+	gem 'spring'
+	gem 'quiet_assets', '~> 1.0.3'
+end
+
 group :development, :test do
    gem 'rspec-rails', '~> 3.0.0'
+	 gem 'factory_girl_rails'
 end
 
 group :test do
    gem 'capybara', '~> 2.4.4'
+	 gem 'capybara-email'
    gem 'shoulda-matchers', require: false
 end
