@@ -25,6 +25,7 @@ class SectorsController < ApplicationController
 	# POST /sectors.json
   def create
 		@sector = Sector.new(sector_params)
+
 		respond_to do |format|
 			if @sector.save
 				format.html { redirect_to @sector, notice: 'Sector was successfully created.' }
@@ -69,6 +70,8 @@ class SectorsController < ApplicationController
 	#Never trust parameters from the scary internet, only allow the white list through.
 	def sector_params
 		params.require(:sector).permit(:name, :description)
-	end	
+	end
+
+
 
 end

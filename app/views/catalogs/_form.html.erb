@@ -1,0 +1,33 @@
+
+<%= form_for(@catalog) do |f| %>
+  <% if @catalog.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@catalog.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @catalog.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name, "Name" %><br>
+    <%= f.text_field :name %>
+	</div>
+
+	<div class="field">
+		<%= f.label :sector_id %><br>
+		<%= collection_select(:catalog, :sector_id, Sector.all, :id, :name, {}, {multiple => false }) %>
+	</div>
+  <div class="field">
+    <%= f.label :description, "Description" %><br>
+    <%= f.text_field :description %>
+  </div>
+  
+
+  <div class="actions">
+    <%= f.submit "Save" %>
+  </div>
+<% end %>

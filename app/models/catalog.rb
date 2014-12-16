@@ -1,3 +1,6 @@
 class Catalog < ActiveRecord::Base
-	has_many :advertisement
+
+	belongs_to :user
+	has_many :advertisements
+
 end

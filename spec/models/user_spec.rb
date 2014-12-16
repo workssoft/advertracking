@@ -12,6 +12,10 @@ RSpec.describe User, :type => :model do
     }
   }
 
+	context "relationships" do
+		it { should have_many :advertisements }
+	end
+
   context "validations" do
     let(:user){ User.new(valid_attributes) }
    

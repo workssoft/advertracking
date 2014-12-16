@@ -11,8 +11,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141211020848) do
-
+ActiveRecord::Schema.define(version: 20141214052853) do
+ 
   create_table "advertisements", force: true do |t|
     t.string   "title"
     t.integer  "user_id"
@@ -26,13 +26,18 @@ ActiveRecord::Schema.define(version: 20141211020848) do
     t.datetime "updated_at"
   end
 
+  add_index "advertisements", ["user_id"], name: "index_advertisements_on_user_id", using: :btree
+
   create_table "catalogs", force: true do |t|
     t.string   "name"
     t.integer  "sector_id"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "catalogs", ["user_id"], name: "index_catalogs_on_user_id", using: :btree
 
   create_table "companies", force: true do |t|
     t.string   "company_name"

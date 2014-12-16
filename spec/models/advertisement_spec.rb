@@ -1,5 +1,7 @@
-require 'rails_helper'
+require File.expand_path("../../rails_helper", __FILE__)
 
 RSpec.describe Advertisement, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+	context "relationships" do
+		it { should belong_to(:user)}
+	end
 end

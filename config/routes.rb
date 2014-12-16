@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
  
+
 	get "/login" => "user_sessions#new", as: :login
 	delete "/logout" => "user_sessions#destroy", as: :logout
  
@@ -7,7 +8,7 @@ Rails.application.routes.draw do
 	resources :user_sessions, only: [:new, :create]
   
 	#get "sectors/index"
-
+	resources :catalogs
 	resources :sectors#, only: [:index, :new, :create, :edit, :update]
 	#resource :password_resets, only: [:new, :create, :edit, :update]
 	

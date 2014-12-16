@@ -1,7 +1,12 @@
 class User < ActiveRecord::Base
-	has_many :advertisement
+
+	
 	has_secure_password
-  validates :email, presence: true,
+  
+	#has_many :advertisements
+  has_many :catalogs
+
+	validates :email, presence: true,
 									  uniqueness: true,
 									  format:{
 		     							with: /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9\.-]+\.[A-Za-z]+\Z/ 

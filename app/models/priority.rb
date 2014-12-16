@@ -1,3 +1,3 @@
 class Priority < ActiveRecord::Base
-	has_many :advertisement
+	has_many :advertisements
 end
