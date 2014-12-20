@@ -1,0 +1,20 @@
+<h4 class="page-title">Catalog List<H4>
+
+<div class="catalog-list no-bullet">
+	<% @catalogs.each do |catalog|  %>
+		<div id="<%= dom_id(catalog) %>">
+			<h2><%= catalog.name %></h2>
+			<p><%= catalog.description %></p>
+			<ul>
+				<li><%= link_to "Show", catalog_path(catalog) %></li>
+				<li><%= link_to "Edit", edit_catalog_path(catalog) %></li> 
+				<li><%= link_to "Destroy", catalog, method: :delete, data: { confirm: "Are you sure?" } %></li>
+			</ul>
+			<br class="clear" />
+		</div>
+	<% end %>
+</div>
+
+<br>
+
+<%= link_to "New Catalog", new_catalog_path %>

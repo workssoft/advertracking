@@ -13,7 +13,7 @@ RSpec.describe User, :type => :model do
   }
 
 	context "relationships" do
-		it { should have_many :advertisements }
+		it { should have_many :catalogs }
 	end
 
   context "validations" do

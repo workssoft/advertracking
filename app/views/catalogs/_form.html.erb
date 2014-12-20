@@ -18,8 +18,8 @@
 	</div>
 
 	<div class="field">
-		<%= f.label :sector_id %><br>
-		<%= collection_select(:catalog, :sector_id, Sector.all, :id, :name, {}, {multiple => false }) %>
+		<%= f.label :sector_id, "Sectors" %><br>
+		<%= collection_select(:catalog, :sector_id, Sector.all, :id, :name, {}, { :multiple => false }) %>
 	</div>
   <div class="field">
     <%= f.label :description, "Description" %><br>
