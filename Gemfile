@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 gem 'rails', '4.1.7'
 gem 'bcrypt', '~> 3.1.9'
 gem 'mysql', '2.9.1'
@@ -13,6 +12,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
+gem 'foundation-rails', '~> 5.4.5'
 
 group :development do
 	gem 'spring'
@@ -23,7 +23,7 @@ group :development, :test do
    gem 'rspec-rails', '~> 3.0.0'
 	 gem 'factory_girl_rails'
 end
-
+ 
 group :test do
    gem 'capybara', '~> 2.4.4'
 	 gem 'capybara-email'
