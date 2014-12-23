@@ -45,6 +45,14 @@ RSpec.describe UserSessionsController, :type => :controller do
 				post :create, email: "jason@teamtreehouse.com", password: "treehouse1"
 				expect(flash[:success]).to eq("Thanks for logging in!")
 			end
+
+			it "sets the remeber_me_token cookie if choosen" do
+				expect(cookies).to_not have_key('remember_me_token')
+				post :create, email: 'jason@teamtreehouse.com', password: 'treehouse1', remember_me: "1"
+				expect(cookies).to have_key('remember_me_token')
+				expect(cookies['remember_me_token']).to_not be_nil
+			end
+
 		end
 
 
@@ -82,7 +90,45 @@ RSpec.describe UserSessionsController, :type => :controller do
 			let(:password) { "incorrect" }
 			it_behaves_like "denied login"
 		end
-
-
   end
+
+	
+	describe "DELETE destroy" do
+		context "logged in" do
+			before do
+				sign_in create(:user)
+			end
+			
+			it "returns a redirect" do
+				delete :destroy
+				expect(response).to be_redirect
+			end
+
+			it "sets the flash message" do
+				delete :destroy
+				expect(flash[:notice]).to_not be_blank
+				expect(flash[:notice]).to match(/logged out/)
+			end	
+
+			it "removes the session[:user_id] key" do
+				session[:user_id] = 1
+				delete :destroy
+				expect(session[:user_id]).to be_nil
+			end
+			
+			it "removes the remember_me_token cookie" do
+			 cookies['remember_me_token'] = 'remembered'
+		 	 delete :destroy
+			 expect(cookies).to_not have_key('remember_me_token')
+		 	 expect(cookies['remember_me_token']).to be_nil 
+			end
+			
+			it "resets the session" do
+				expect(controller).to receive(:reset_session)
+				delete :destroy
+			end
+
+		end
+	end
+
 end
