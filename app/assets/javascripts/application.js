@@ -14,6 +14,16 @@
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
+//= require jquery
+//= require handlebars
+//= require ember
+//= require ember-data
+//= require_self
+//= require ./advertracking
+
+// for more details see: http://emberjs.com/guides/application/
+Advertracking = Ember.Application.create();
+
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

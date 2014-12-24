@@ -12,6 +12,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
+gem 'ember-rails'
+gem 'ember-source', '~>1.9.1'
+
 gem 'foundation-rails', '~> 5.4.5'
 
 group :development do
