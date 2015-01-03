@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141221000607) do
+ActiveRecord::Schema.define(version: 20150103025207) do
 
   create_table "advertisements", force: true do |t|
     t.string   "title"
@@ -26,6 +26,10 @@ ActiveRecord::Schema.define(version: 20141221000607) do
     t.datetime "updated_at"
   end
 
+  add_index "advertisements", ["catalog_id"], name: "index_advertisements_on_catalog_id", using: :btree
+  add_index "advertisements", ["company_id"], name: "index_advertisements_on_company_id", using: :btree
+  add_index "advertisements", ["priority_id"], name: "index_advertisements_on_priority_id", using: :btree
+  add_index "advertisements", ["sector_id"], name: "index_advertisements_on_sector_id", using: :btree
   add_index "advertisements", ["user_id"], name: "index_advertisements_on_user_id", using: :btree
 
   create_table "catalogs", force: true do |t|
@@ -37,6 +41,7 @@ ActiveRecord::Schema.define(version: 20141221000607) do
     t.integer  "user_id"
   end
 
+  add_index "catalogs", ["sector_id"], name: "index_catalogs_on_sector_id", using: :btree
   add_index "catalogs", ["user_id"], name: "index_catalogs_on_user_id", using: :btree
 
   create_table "companies", force: true do |t|
@@ -53,6 +58,8 @@ ActiveRecord::Schema.define(version: 20141221000607) do
     t.datetime "updated_at"
     t.integer  "sector_id"
   end
+
+  add_index "companies", ["sector_id"], name: "index_companies_on_sector_id", using: :btree
 
   create_table "priorities", force: true do |t|
     t.string   "name"

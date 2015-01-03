@@ -17,6 +17,8 @@ gem 'ember-source', '~>1.9.1'
 
 gem 'foundation-rails', '~> 5.4.5'
 
+gem 'cancancan', '~>1.9'
+
 group :development do
 	gem 'spring'
 	gem 'quiet_assets', '~> 1.0.3'
