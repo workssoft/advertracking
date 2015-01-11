@@ -9,7 +9,8 @@ class Ability
 
 		#Define a few sample abilities
 		
-
+		can :manage, :all if user.role == "manager"
+		can :read, :all if user.role == "employee"
 		# Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)
