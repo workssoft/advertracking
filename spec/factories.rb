@@ -1,4 +1,8 @@
-FactoryGirl.define do
+FactoryGirl.define do  factory :task_list do
+    title "MyString"
+description "MyText"
+  end
+
 	factory :user do
 		first_name "First"
 		last_name "Last"

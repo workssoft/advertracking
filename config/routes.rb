@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
  
 
+  resources :task_lists
+
 	get "/login" => "user_sessions#new", as: :login
 	delete "/logout" => "user_sessions#destroy", as: :logout
  
