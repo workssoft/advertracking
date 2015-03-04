@@ -12,12 +12,15 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
-gem 'ember-rails'
-gem 'ember-source', '~>1.9.1'
+#gem 'ember-rails'
+#gem 'ember-source', '~>1.9.1'
+
+gem 'angularjs-rails', '~> 1.3.10'
 
 gem 'foundation-rails', '~> 5.4.5'
 
 gem 'cancancan', '~>1.9'
+
 
 group :development do
 	gem 'spring'
@@ -25,12 +28,13 @@ group :development do
 end
 
 group :development, :test do
-   gem 'rspec-rails', '~> 3.0.0'
-	 gem 'factory_girl_rails'
+	gem 'guard-rspec'
+  gem 'rspec-rails', '~> 3.0.0'
+	gem 'factory_girl_rails'
 end
  
 group :test do
-   gem 'capybara', '~> 2.4.4'
-	 gem 'capybara-email'
-   gem 'shoulda-matchers', require: false
+  gem 'capybara', '~> 2.4.4'
+	gem 'capybara-email'
+  gem 'shoulda-matchers', require: false
 end

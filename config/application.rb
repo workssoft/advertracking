@@ -22,6 +22,6 @@ module Advertracking
 		I18n.enforce_available_locales = false	
 		config.action_mailer.preview_path = "#{Rails.root}/spec/mailers/mailer_previews"
 		config.assets.precompile += %w( vendor/modernizr.js )
-
+		#config.activesupport.deprecation = :silence
   end
 end

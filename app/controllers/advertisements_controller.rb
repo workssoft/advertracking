@@ -2,11 +2,18 @@ class AdvertisementsController < ApplicationController
 	
 	before_action :require_user
 	before_action :set_advertisement, only: [:show, :edit, :update, :destroy]
-  
+ 
+
 	# GET /advertisements
 	# GET / advertisements.json
 	def index
-		@advertisements = Advertisement.all
+		@users = User.all
+		
+		#render json: @users = User.all
+
+	 @advertisements = Advertisement.all
+
+	 render json: @advertisements
 	end
 
 	# GET /advertisemets/1

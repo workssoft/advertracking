@@ -1,5 +1,8 @@
-require 'rails_helper'
+require File.expand_path("../../../rails_helper", __FILE__)
 
-RSpec.describe "home/index.html.erb", :type => :view do
-  pending "add some examples to (or delete) #{__FILE__}"
-end
+#describe "Creating menu list" do
+#	it "requires advertisement link" do
+		#visit "/advertisements"
+		#expect(page).to have_content("You must be logged in")
+#	end
+#end 

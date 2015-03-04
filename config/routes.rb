@@ -14,12 +14,16 @@ Rails.application.routes.draw do
 	
 	#get 'password_resets/edit.:id', to: 'password_resets#edit'	
   resources :advertisements#, only: [:new, :create, :edit, :update]
-
+	resources :companies
   resources :password_resets do
       member do
         patch :complete
       end
   end
+
+	namespace :admin do
+		resources :catalogs
+	end
  
 	# You can have the root of your site routed with "root"
  

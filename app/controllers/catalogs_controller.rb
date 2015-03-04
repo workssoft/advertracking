@@ -5,7 +5,11 @@ class CatalogsController < ApplicationController
 	# GET /catalogs
 	# GET /catalogs.json
 	def index
-		@catalogs = current_user.catalogs
+		#render json: @users = User.all
+		#@catalogs = current_user.catalogs
+		@catalogs = Catalog.all
+			#@users = User.all
+		 render json: @catalogs
 	end
 
 	# GET /sectors/1

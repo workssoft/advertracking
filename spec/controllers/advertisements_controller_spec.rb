@@ -21,7 +21,6 @@ RSpec.describe AdvertisementsController, :type => :controller do
 
 	end
 
-
   describe "GET new" do
     it "returns http success" do
       get :new

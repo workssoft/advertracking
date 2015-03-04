@@ -12,7 +12,7 @@ describe "Logging In" do
 		expect(page).to have_content("Advertisement List")
 		expect(page).to have_content("Thanks for logging in!")
 	end
-
+	
 	it "displays the email address in the event of a failed login" do
 		visit new_user_session_path
 		fill_in "Email Address", with: "jason@teamtreehouse.com"
@@ -21,6 +21,20 @@ describe "Logging In" do
 
 		expect(page).to have_content("Please check your email and password")
 		expect(page).to have_field("Email Address", with: "jason@teamtreehouse.com")
+	end
+
+	it "redirects the user to advertisements if user logged in" do
+		User.create(first_name:"Jason", last_name:"Seifer", email: "jason@teamtreehouse.com", password: "treehouse1", password_confirmation:"treehouse1")
+		visit new_user_session_path
+		fill_in "Email Address", with: "jason@teamtreehouse.com"
+		fill_in "Password", with: "treehouse1"
+		click_button "Log In"
+
+		expect(page).to have_content("Advertisement List")
+		expect(page).to have_content("Thanks for logging in!")
+		
+		visit "/"
+		expect(page).to have_content("Advertisement List")
 	end
 end
 

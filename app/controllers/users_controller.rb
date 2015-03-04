@@ -1,5 +1,14 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :fetch_users, :set_user, only: [:show, :edit, :update, :destroy]
+
+	def fetch_users
+		@users = User.all
+	end
+
+	def index
+		 @users = User.all
+		 render json: @users
+	end
 
   # GET /users/new
   def new
@@ -9,6 +18,10 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
   end
+
+	def show 
+		@user = User.find(params[:id])
+	end
 
   # POST /users
   # POST /users.json

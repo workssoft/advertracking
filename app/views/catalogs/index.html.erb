@@ -1,19 +1,27 @@
-<h4 class="page-title">Catalog List<H4>
+<h4 class="page-title">Katalog Listesi<H4>
 
-<div class="catalog-list no-bullet">
+<ul class="list catalog-list no-bullet">
 	<% @catalogs.each do |catalog|  %>
-		<div id="<%= dom_id(catalog) %>">
-			<h2><%= catalog.name %></h2>
-			<p><%= catalog.description %></p>
-			<ul>
-				<li><%= link_to "Show", catalog_path(catalog) %></li>
+
+	
+
+		<li id="<%= dom_id(catalog) %>" class="catalog-item row">
+
+			<div class="small-2 medium-1 columns">
+			</div>
+			<div cass="small-10 medium-11 columns truncate catalog-content" title="<%= catalog.description %>">
+		  </div>
+		
+
+
+				<h2><%= catalog.name %></h2>
+				<p><%= catalog.description %></p>	
+				<li><%= link_to "Show", catalog_path(catalog) %></li>		
 				<li><%= link_to "Edit", edit_catalog_path(catalog) %></li> 
 				<li><%= link_to "Destroy", catalog, method: :delete, data: { confirm: "Are you sure?" } %></li>
-			</ul>
-			<br class="clear" />
-		</div>
+		</li>
 	<% end %>
-</div>
+</ul>
 
 <br>
 

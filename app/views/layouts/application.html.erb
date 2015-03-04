@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="Advertisement">
 <head>
 	<title>Advertracking</title>
  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,29 +18,87 @@
 <% end %>
 
 
-<header class="row global-header">
-	<div class="small-12 small-centered medium-8 medium-centered large-5 large-centered columns">
-		<% if logged_in? %>
-			<%= link_to "Log Out", logout_path, method: :delete %>
-		<% else %>
-			<%= link_to "Log In", new_user_session_path %>
-			<%= link_to "Sign Up", new_user_path %>
-		<% end %>
-	</div>
-</header>
+<% if logged_in? %>
+<div class="off-canvas-wrap" data-offcanvas>
+  <div class="inner-wrap">
+    <nav class="tab-bar">
+      <section class="left-small">
+        <a class="left-off-canvas-toggle menu-icon" ><span></span></a>
+      </section>
 
+      <section class="middle tab-bar-section">
+				<h1 class="title">
+					<% if logged_in? %>
+						<%= link_to "Çıkış", logout_path, method: :delete %> |
+						<% if can? :update, current_user %>
+							<%= link_to "Ayarlar", edit_user_path(current_user) %>
+						<% end %>
+					<% else %>
+						<%= link_to "Log In", new_user_session_path %>
+						<%= link_to "Sign Up", new_user_path %>
+					<% end %>	
+	</h1>
+      </section>
 
-<div class="row collapse">
-	<div class="small-12 small-centered medium-8 medium-centered large-5 large-centered columns">
-		<%= yield %>
-	</div>
+			<section class="right-small">
+				<a class="right-off-canvas-toggle menu-icon"><span></span></a>
+      </section>
+    </nav>
+
+    <aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        <li><label> Menu </label></li> 
+				<li><%= link_to 'Kataloglar', catalogs_path %> </li>
+				<li><%= link_to 'İlanlar', advertisements_path %></li>
+        <li><%= link_to 'Sektörler', sectors_path %></li>
+        <li><%= link_to 'Şirketler', companies_path %></li>
+      </ul>
+    </aside>
+
+    <aside class="right-off-canvas-menu" ng-controller="UsersController">
+      <ul class="off-canvas-list">
+				<li><label>Çalışanlar</label></li>
+				<li ng-repeat="user in users">
+					<a href="#users/{{user.id}}">{{ user.first_name }}</a>
+				</li>
+				<!--< @users.each do |user| %>
+					<div id="<= dom_id(user) %>">
+						< if user.role == "employee" %>	
+							<li><a href="users/<= user.id %>"><= user.first_name %></a></li>
+						< end %>					
+					</div>
+				< end -->
+      </ul>
+    </aside>
+
+    <section class="main-section">
+			<div class="row collapse">
+				<div class="small-12 small-centered medium-8 medium-centered large-5 large-centered columns">
+					<div ng-view></div>
+				</div>
+			</div>
+    </section>
+
+  <a class="exit-off-canvas"></a>
+
+  </div>
 </div>
+
+<% else %>
+			<div class="row collapse">
+				<div class="small-12 small-centered medium-8 medium-centered large-5 large-centered columns">
+					<%= yield %>
+
+				</div>
+			</div>
+<% end %>
+
 
 <footer class="row">
 	<div class="small-12 small-centered medium-8 medium-centered large-5 large-centered columns text-center">
 		<% if logged_in? %>
 			<% if can? :update, current_user %>
-				<%= link_to "Settings", edit_user_path(current_user) %>
+				<%= link_to "Settings", edit_user_path(current_user) %>	
 			<% end %>
 		<% end %>
 	</div>
